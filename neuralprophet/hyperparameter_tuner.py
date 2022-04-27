@@ -137,7 +137,7 @@ def tune_hyperparameters(
                 "daily_seasonality": tune.choice([True, False]),
                 "seasonality_mode": tune.choice(["additive", "multiplicative"]),
                 "seasonality_reg": tune.choice([0, 0.5, 1, 10]),
-                "n_lags": tune.choice([10, 30, 100]),
+                "n_lags": tune.choice([10,20,30,40,50,60,70,80,90 100]),
                 "d_hidden": tune.choice([8, 64, 128]),
                 "num_hidden_layers": tune.choice([2, 8, 16]),
                 "ar_sparsity": tune.choice([0.1, 0.3, 0.8]),
