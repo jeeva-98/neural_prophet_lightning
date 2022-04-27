@@ -129,6 +129,7 @@ def tune_hyperparameters(
             config = {
                 "growth": tune.choice(["off", "linear"]),
                 "n_changepoints": tune.choice([5, 10, 100]),
+                "n_forecasts": tune.choice([52]),
                 "changepoints_range": tune.choice([0.5, 0.8, 0.9]),
                 "trend_reg": tune.choice([0, 0.5, 1, 10]),
                 "yearly_seasonality": tune.choice([True, False]),
