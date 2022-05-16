@@ -137,10 +137,10 @@ def tune_hyperparameters(
                 "daily_seasonality": tune.choice([True, False]),
                 "seasonality_mode": tune.choice(["additive", "multiplicative"]),
                 "seasonality_reg": tune.choice([0, 0.5, 1, 10]),
-                "n_lags": tune.choice([10,20,30,31,35,36,37,38,39,40]),
-                "d_hidden": tune.choice([2,3,4,5,6,7,8,16,64,128]),
+                "n_lags": tune.choice([30,31,35,36,37,38,39,40,41,42,45,50,51,55]),
+                "d_hidden": tune.choice([2,3,4,5,6,7,8,16,32,64,128,256,512]),
                 "num_hidden_layers": tune.choice([2, 8, 16]),
-                "ar_sparsity": tune.choice([0.1, 0.3, 0.8]),
+                "ar_sparsity": tune.uniform([0.1,0.8]), #choice
                 "learning_rate": tune.loguniform(1e-4, 1e-1),
                 "loss_func": tune.choice(["Huber", "MSE"]),
                 "normalize": tune.choice(["auto", "soft", "off", "minmax", "standardize"]),
