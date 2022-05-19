@@ -129,7 +129,6 @@ def tune_hyperparameters(
             config = {
                 "growth": tune.choice(["off", "linear"]),
                 "n_changepoints": tune.choice([5, 10, 100]),
-                "n_forecasts": tune.choice([4]),
                 "changepoints_range": tune.choice([0.5, 0.8, 0.9]),
                 "trend_reg": tune.choice([0, 0.5, 1, 10]),
                 "yearly_seasonality": tune.choice([True, False]),
@@ -137,13 +136,29 @@ def tune_hyperparameters(
                 "daily_seasonality": tune.choice([True, False]),
                 "seasonality_mode": tune.choice(["additive", "multiplicative"]),
                 "seasonality_reg": tune.choice([0, 0.5, 1, 10]),
-                "n_lags": tune.choice([30,31,35,36,37,38,39,40,41,42,45,50,51,55]),
-                "d_hidden": tune.choice([2,3,4,5,6,7,8,16,32,64,128,256,512]),
-                "num_hidden_layers": tune.choice([2,4,6, 8, 16]),
-                "ar_sparsity": tune.choice([0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9]), #choice
+                "n_lags": tune.choice([10, 30, 100]),
+                "d_hidden": tune.choice([8, 64, 128]),
+                "num_hidden_layers": tune.choice([2, 8, 16]),
+                "ar_sparsity": tune.choice([0.1, 0.3, 0.8]),
+                "growth": tune.grid_search(["off", "linear"]),
+                "n_changepoints": tune.grid_search([5, 10, 100]),
+                "changepoints_range": tune.grid_search([0.5, 0.8, 0.9]),
+                "trend_reg": tune.grid_search([0, 0.5, 1, 10]),
+                "yearly_seasonality": tune.grid_search([True, False]),
+                "weekly_seasonality": tune.grid_search([True, False]),
+                "daily_seasonality": tune.grid_search([True, False]),
+                "seasonality_mode": tune.grid_search(["additive", "multiplicative"]),
+                "seasonality_reg": tune.grid_search([0, 0.5, 1, 10]),
+                "n_lags": tune.grid_search([10, 30, 100]),
+                "d_hidden": tune.grid_search([8, 64, 128]),
+                "num_hidden_layers": tune.grid_search([2, 8, 16]),
+                "ar_sparsity": tune.grid_search([0.1, 0.3, 0.8]),
                 "learning_rate": tune.loguniform(1e-4, 1e-1),
                 "loss_func": tune.choice(["Huber", "MSE"]),
                 "normalize": tune.choice(["auto", "soft", "off", "minmax", "standardize"]),
+                "loss_func": tune.grid_search(["Huber", "MSE"]),
+                "normalize": tune.grid_search(["auto", "soft", "off", "minmax", "standardize"]),
+            
             }
 
     elif model_name == "LSTM":
