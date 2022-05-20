@@ -140,8 +140,8 @@ def tune_hyperparameters(
                 "d_hidden": tune.grid_search([8,16,32,64,128]),
                 "num_hidden_layers": tune.grid_search([1,2,3,4,5,6,7, 8,16]),
                 "ar_sparsity": tune.grid_search([0.1,0.2,0.3,0.5]),
-                "learning_rate": tune.grid_search(1e-4, 1e-2,1e-3,1e-1),
-                "loss_func": tune.grid_search(["Huber", "MSE"]),
+                "learning_rate": tune.grid_search([1e-4, 1e-2,1e-3,1e-1]),
+                "loss_func": tune.grid_search(["Huber"]),
                 "normalize": tune.grid_search(["off", "minmax"]),
             }
 
